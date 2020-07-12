@@ -21,15 +21,15 @@ By default cron daeomon runs in foreground
 When image will run, files in `/etc/cron.d` will be copied to `/var/spool/cron/crontab`.   
 If `CRON_STRINGS` is defined the entry script creates the file */var/spool/cron/crontab/CRON_STRINGS*  
 
-####Log files
+#### Log files
 
-Log file by default placed in `/var/log/cron/cron.log` 
+By default placed in `/var/log/cron/cron.log` 
 
 #### Simple usage:
 
 ```
 docker run --name="cron-sample" -d \
--v /path/to/app/conf/crontabs:/etc/cron.d \
+-v /path/to/app/conf/crontabs:/etc/cron.d \       
 -v /path/to/app/scripts:/scripts \
 justb4/cron
 ```
