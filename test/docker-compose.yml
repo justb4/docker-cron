@@ -1,0 +1,16 @@
+version: "3"
+
+# Example docker-compose file, adapt for your setup
+services:
+
+  cron:
+
+    image: justb4/cron:latest
+    build: ../.
+
+    container_name: cron
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./crontabs:/etc/cron.d
+      - ./scripts:/myscripts
