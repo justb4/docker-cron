@@ -1,4 +1,4 @@
-![CI](https://github.com/justb4/docker-cron/workflows/CI/badge.svg)
+![Docker Build](https://github.com/justb4/docker-cron/workflows/CI/badge.svg)
 ![GitHub release](https://img.shields.io/github/release/justb4/docker-cron.svg)
 ![Docker Pulls](https://img.shields.io/docker/pulls/justb4/cron.svg)
 
