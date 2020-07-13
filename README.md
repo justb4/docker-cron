@@ -7,7 +7,9 @@
 Dockerfile and scripts for creating image to use `cron`. Based on Alpine Linux. 
 Installed packages: `dcron docker docker-compose` and `ca-certificates`.
 
-Allows to execute commands in other Docker images. 
+Allows also to execute commands in other Docker images. 
+
+Available on Docker Hub: https://hub.docker.com/repository/docker/justb4/cron
 
 Inspired from: https://github.com/xordiv/docker-alpine-cron - mainly added Docker tools.
 
