@@ -10,6 +10,9 @@ services:
 
     container_name: cron
 
+    environment:
+      - CRON_DEBUG_LEVEL=debug
+
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./crontabs:/etc/cron.d

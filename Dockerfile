@@ -3,12 +3,15 @@ FROM alpine:3.12
 
 LABEL maintainer="Just van den Broecke <justb4@gmail.com>"
 
+ARG EXTRA_APK_PACKAGES="docker docker-compose"
+
+ENV CRON_DEBUG_LEVEL="notice"
+
 RUN apk update && \
-	apk add dcron ca-certificates docker docker-compose && \
+	apk add dcron ca-certificates ${EXTRA_APK_PACKAGES} && \
 	rm -rf /var/cache/apk/* && \
-	mkdir -p /var/log/cron && \
 	mkdir -m 0644 -p /var/spool/cron/crontabs && \
-	touch /var/log/cron/cron.log && \
+	touch /var/log/cron.log && \
 	mkdir -m 0644 -p /etc/cron.d
 
 COPY /scripts/* /

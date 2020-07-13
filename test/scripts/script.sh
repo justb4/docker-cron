@@ -1,2 +1,4 @@
 #!/bin/sh
-echo "date=`date`" >> /tmp/dates.txt
+
+# trivial command
+echo "date=$(date)" >> /tmp/dates.txt

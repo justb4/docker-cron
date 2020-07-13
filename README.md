@@ -4,30 +4,34 @@
 
 # docker-cron
 
-Dockerfile and scripts for creating image with `cron`-based on Alpine  
+Dockerfile and scripts for creating image to use `cron`. Based on Alpine Linux. 
 Installed packages: `dcron docker docker-compose` and `ca-certificates`.
 
 Allows to execute commands in other Docker images. 
 
 Inspired from: https://github.com/xordiv/docker-alpine-cron - mainly added Docker tools.
 
+It installs and uses "Dillon's Cron" `dcron`, via APK: http://www.jimpryor.net/linux/dcron.html
+
 #### Environment variables:
 
-`CRON_STRINGS` - strings with cron jobs. Use "\n" for newline (Default: undefined)   
-`CRON_TAIL` - if defined cron log file will read to *stdout* by *tail* (Default: undefined) 
-  
-By default cron daeomon runs in foreground  
+- `CRON_STRINGS` - strings with cron jobs. Use "\n" for newline (Default: undefined)   
+- `CRON_TAIL` - if defined cron log file will read to *stdout* by *tail* (Default: undefined) 
+- `CRON_DEBUG_LEVEL` - set cron daemon loglevel: `emerg|alert|crit|err|warning|notice|info|debug` (Default: `notice`) 
+
+By default cron daemon runs in the foreground unless `CRON_TAIL` is set.  
 
 #### Cron files
 
 - /etc/cron.d - place to mount custom crontab files  
 
-When image will run, files in `/etc/cron.d` will be copied to `/var/spool/cron/crontab`.   
-If `CRON_STRINGS` is defined the entry script creates the file */var/spool/cron/crontab/CRON_STRINGS*  
+When the image is run, files in `/etc/cron.d` will be copied to `/var/spool/cron/crontab`.   
+If `CRON_STRINGS` is defined the [entry script](scripts/docker-entry.sh) 
+creates the file `/var/spool/cron/crontab/CRON_STRINGS`.  
 
 #### Log files
 
-By default placed in `/var/log/cron/cron.log` 
+By default placed in `/var/log/cron.log` 
 
 #### Simple usage:
 
@@ -54,4 +58,6 @@ justb4/cron
 ```
 
 #### Docker Compose
-See [example in test dir](test/docker-compose.yml).
+See [complete example in test dir](test/docker-compose.yml).
+This is the preferred way of running. Also shows how to use Docker client
+commands.

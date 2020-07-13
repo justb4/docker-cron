@@ -1,2 +1,2 @@
-* * * * * docker exec tworx-mapproxy  /mapproxy/georss-seeder.sh traceland_points http://traceland:8080/tland > /var/log/mapproxy.log 2>&1
-* * * * * /myscripts/script.sh > /var/log/script.log 2>&1
+* * * * * docker ps > /var/log/dockerps.log 2>&1
+* * * * * /myscripts/script.sh
